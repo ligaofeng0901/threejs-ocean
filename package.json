@@ -1,11 +1,14 @@
 {
   "name": "rollup-starter-lib",
   "version": "1.0.0",
-  "main": "dist/how-long-till-lunch.cjs.js",
-  "module": "dist/how-long-till-lunch.esm.js",
-  "browser": "dist/how-long-till-lunch.umd.js",
+  "main": "dist/threejs-ocean.cjs.js",
+  "module": "dist/threejs-ocean.esm.js",
+  "browser": "dist/threejs-ocean.umd.js",
   "dependencies": {
-    "ms": "^2.0.0"
+    "ms": "^2.0.0",
+    "npm-run-all": "^4.1.5",
+    "serve": "^11.3.2",
+    "three": "^0.119.1"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^11.0.1",
@@ -14,9 +17,11 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w",
+    "watch": "rollup -c -w",
+    "dev": "npm-run-all --parallel start watch",
     "test": "node test/test.js",
-    "pretest": "npm run build"
+    "pretest": "npm run build",
+    "start": "serve ./"
   },
   "files": [
     "dist"
